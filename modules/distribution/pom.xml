@@ -22,7 +22,7 @@
     <parent>
         <groupId>org.wso2.sp</groupId>
         <artifactId>org.wso2.carbon.sp.parent</artifactId>
-        <version>4.4.0-m8</version>
+        <version>4.5.0-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
@@ -157,10 +157,16 @@
             <artifactId>org.wso2.carbon.event.simulator.core.feature</artifactId>
             <type>zip</type>
         </dependency>
-
         <dependency>
             <groupId>org.wso2.carbon.analytics</groupId>
             <artifactId>org.wso2.carbon.siddhi.store.api.rest.feature</artifactId>
+            <type>zip</type>
+        </dependency>
+
+        <!-- Health Check API related -->
+        <dependency>
+            <groupId>org.wso2.carbon.analytics</groupId>
+            <artifactId>org.wso2.carbon.health.check.core.feature</artifactId>
             <type>zip</type>
         </dependency>
 
@@ -244,6 +250,11 @@
             <artifactId>org.wso2.carbon.cluster.coordinator.rdbms.feature</artifactId>
             <type>zip</type>
         </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon.analytics</groupId>
+            <artifactId>org.wso2.carbon.sp.coordination.listener.feature</artifactId>
+            <type>zip</type>
+        </dependency>
 
         <!-- Permission module -->
         <dependency>
@@ -274,11 +285,10 @@
             <artifactId>org.wso2.carbon.uiserver.feature</artifactId>
             <type>zip</type>
         </dependency>
-
         <!--Status Dashboard-->
         <dependency>
             <groupId>org.wso2.carbon.analytics</groupId>
-            <artifactId>org.wso2.carbon.siddhi.metrics.core.feature</artifactId>
+            <artifactId>org.wso2.carbon.sp.metrics.core.feature</artifactId>
             <type>zip</type>
         </dependency>
         <dependency>
@@ -331,6 +341,11 @@
         <dependency>
             <groupId>org.wso2.analytics.solutions</groupId>
             <artifactId>org.wso2.analytics.solutions.sp.message.tracer.feature</artifactId>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.analytics.solutions</groupId>
+            <artifactId>org.wso2.analytics.solutions.sp.data.search.feature</artifactId>
             <type>zip</type>
         </dependency>
         <dependency>
@@ -622,6 +637,36 @@
                                     <version>${siddhi.io.cdc.version}</version>
                                     <type>jar</type>
                                 </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.wso2.extension.siddhi.io.prometheus</groupId>
+                                    <artifactId>siddhi-io-prometheus</artifactId>
+                                    <version>${siddhi.io.prometheus.version}</version>
+                                    <type>jar</type>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.wso2.extension.siddhi.io.nats</groupId>
+                                    <artifactId>siddhi-io-nats</artifactId>
+                                    <version>${siddhi.io.nats.version}</version>
+                                    <type>jar</type>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.wso2.extension.siddhi.io.googlepubsub</groupId>
+                                    <artifactId>siddhi-io-googlepubsub</artifactId>
+                                    <version>${siddhi.io.googlepubsub.version}</version>
+                                    <type>jar</type>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.wso2.extension.siddhi.io.hl7</groupId>
+                                    <artifactId>siddhi-io-hl7</artifactId>
+                                    <version>${siddhi.io.hl7.version}</version>
+                                    <type>jar</type>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.wso2.extension.siddhi.io.snmp</groupId>
+                                    <artifactId>siddhi-io-snmp</artifactId>
+                                    <version>${siddhi.io.snmp.version}</version>
+                                    <type>jar</type>
+                                </artifactItem>
                                 <!--Map Extensions-->
                                 <!--Mapper Extensions-->
                                 <artifactItem>
@@ -716,6 +761,12 @@
                                     <type>jar</type>
                                 </artifactItem>
                                 <artifactItem>
+                                    <groupId>org.wso2.extension.siddhi.store.influxdb</groupId>
+                                    <artifactId>siddhi-store-influxdb</artifactId>
+                                    <version>${siddhi.store.influxdb.version}</version>
+                                    <type>jar</type>
+                                </artifactItem>
+                                <artifactItem>
                                     <groupId>org.wso2.extension.siddhi.io.sqs</groupId>
                                     <artifactId>siddhi-io-sqs</artifactId>
                                     <version>${siddhi.io.sqs.version}</version>
@@ -725,6 +776,12 @@
                                     <groupId>org.wso2.extension.siddhi.io.websocket</groupId>
                                     <artifactId>siddhi-io-websocket</artifactId>
                                     <version>${siddhi.io.websocket.version}</version>
+                                    <type>jar</type>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.wso2.extension.siddhi.map.avro</groupId>
+                                    <artifactId>siddhi-map-avro</artifactId>
+                                    <version>${siddhi.map.avro.version}</version>
                                     <type>jar</type>
                                 </artifactItem>
                                 <artifactItem>
@@ -843,7 +900,7 @@
                                     <version>${carbon.analytics.version}</version>
                                 </feature>
                                 <feature>
-                                    <id>org.wso2.carbon.siddhi.metrics.core.feature</id>
+                                    <id>org.wso2.carbon.sp.metrics.core.feature</id>
                                     <version>${carbon.analytics.version}</version>
                                 </feature>
 
@@ -896,6 +953,12 @@
                                 </feature>
                                 <feature>
                                     <id>org.wso2.carbon.siddhi.store.api.rest.feature</id>
+                                    <version>${carbon.analytics.version}</version>
+                                </feature>
+
+                                <!-- Health Check API feature -->
+                                <feature>
+                                    <id>org.wso2.carbon.health.check.core.feature</id>
                                     <version>${carbon.analytics.version}</version>
                                 </feature>
 
@@ -993,6 +1056,10 @@
                                     <id>org.wso2.carbon.cluster.coordinator.rdbms.feature</id>
                                     <version>${carbon.coordination.version}</version>
                                 </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.sp.coordination.listener.feature</id>
+                                    <version>${carbon.analytics.version}</version>
+                                </feature>
 
                                 <!-- Data Provider -->
                                 <feature>
@@ -1015,6 +1082,10 @@
                                 </feature>
                                 <feature>
                                     <id>org.wso2.analytics.solutions.sp.message.tracer.feature</id>
+                                    <version>${analytics.solutions.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.analytics.solutions.sp.data.search.feature</id>
                                     <version>${analytics.solutions.version}</version>
                                 </feature>
                                 <feature>
@@ -1183,7 +1254,7 @@
                                     <version>${carbon.analytics.version}</version>
                                 </feature>
                                 <feature>
-                                    <id>org.wso2.carbon.siddhi.metrics.core.feature.group</id>
+                                    <id>org.wso2.carbon.sp.metrics.core.feature.group</id>
                                     <version>${carbon.analytics.version}</version>
                                 </feature>
                                 <!-- MSF4J Features -->
@@ -1211,6 +1282,12 @@
                                 </feature>
                                 <feature>
                                     <id>org.wso2.carbon.siddhi.store.api.rest.feature.group</id>
+                                    <version>${carbon.analytics.version}</version>
+                                </feature>
+
+                                <!-- Health Check API feature -->
+                                <feature>
+                                    <id>org.wso2.carbon.health.check.core.feature</id>
                                     <version>${carbon.analytics.version}</version>
                                 </feature>
 
@@ -1254,6 +1331,10 @@
                                 <feature>
                                     <id>org.wso2.carbon.cluster.coordinator.rdbms.feature.group</id>
                                     <version>${carbon.coordination.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.sp.coordination.listener.feature.group</id>
+                                    <version>${carbon.analytics.version}</version>
                                 </feature>
 
                                 <!-- Distributed Resource feature -->
@@ -1346,6 +1427,12 @@
                                     <version>${carbon.analytics.version}</version>
                                 </feature>
 
+                                <!-- Health Check API feature -->
+                                <feature>
+                                    <id>org.wso2.carbon.health.check.core.feature</id>
+                                    <version>${carbon.analytics.version}</version>
+                                </feature>
+
                                 <!-- Metrics Features -->
                                 <feature>
                                     <id>org.wso2.carbon.metrics.core.feature.group</id>
@@ -1364,7 +1451,7 @@
                                     <version>${carbon.analytics.version}</version>
                                 </feature>
                                 <feature>
-                                    <id>org.wso2.carbon.siddhi.metrics.core.feature.group</id>
+                                    <id>org.wso2.carbon.sp.metrics.core.feature.group</id>
                                     <version>${carbon.analytics.version}</version>
                                 </feature>
                                 <!-- MSF4J Features -->
@@ -1415,6 +1502,10 @@
                                 <feature>
                                     <id>org.wso2.carbon.cluster.coordinator.rdbms.feature.group</id>
                                     <version>${carbon.coordination.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.sp.coordination.listener.feature.group</id>
+                                    <version>${carbon.analytics.version}</version>
                                 </feature>
                                 <!-- Permission module -->
                                 <feature>
@@ -1501,7 +1592,7 @@
                                     <version>${carbon.metrics.version}</version>
                                 </feature>
                                 <feature>
-                                    <id>org.wso2.carbon.siddhi.metrics.core.feature.group</id>
+                                    <id>org.wso2.carbon.sp.metrics.core.feature.group</id>
                                     <version>${carbon.analytics.version}</version>
                                 </feature>
                                 <!-- MSF4J Features -->
@@ -1576,6 +1667,10 @@
                                 <feature>
                                     <id>org.wso2.carbon.cluster.coordinator.rdbms.feature.group</id>
                                     <version>${carbon.coordination.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.sp.coordination.listener.feature.group</id>
+                                    <version>${carbon.analytics.version}</version>
                                 </feature>
                             </features>
                         </configuration>
@@ -1743,6 +1838,12 @@
                                     <version>${carbon.analytics.version}</version>
                                 </feature>
 
+                                <!-- Health Check API feature -->
+                                <feature>
+                                    <id>org.wso2.carbon.health.check.core.feature</id>
+                                    <version>${carbon.analytics.version}</version>
+                                </feature>
+
                                 <!-- Data Provider feature -->
                                 <feature>
                                     <id>org.wso2.carbon.data.provider.feature.group</id>
@@ -1764,6 +1865,10 @@
                                 </feature>
                                 <feature>
                                     <id>org.wso2.analytics.solutions.sp.message.tracer.feature</id>
+                                    <version>${analytics.solutions.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.analytics.solutions.sp.data.search.feature</id>
                                     <version>${analytics.solutions.version}</version>
                                 </feature>
                                 <feature>
